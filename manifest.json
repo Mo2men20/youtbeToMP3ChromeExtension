@@ -1,0 +1,46 @@
+{
+	"manifest_version":2,
+	"version":"0.0.1",
+	"name":"OneClick",
+	"description":"Enjoy downloading mp3 files from youtube with just one click. For ease of use press Ctrl+D to download the song.",
+
+	"permissions": [
+          "tabs"
+        ],
+
+	"author":"Mu'men Tayyem",
+
+	"page_action":{
+		"default_icon":{
+			"38" : "dl.png"
+		}
+		},
+
+	"content_scripts":[{
+		"matches":["https://www.youtube.com/*"],
+		"js":["jquery.js","content.js"]
+
+		},
+		{
+		"matches":["http://www.youtubeinmp3.com/*"],
+		"js":["CheckerSender.js"],
+		"run_at":"document_start"
+			}],
+
+	"background":{
+		"scripts":["jquery.js","bg.js"],
+		"persistent":true
+		
+	},
+
+	"commands":{
+		"_execute_page_action":{
+			"suggested_key":{
+				"windows":"Ctrl+D"
+			}
+		}
+	}
+
+
+
+}
